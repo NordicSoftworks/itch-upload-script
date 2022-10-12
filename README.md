@@ -16,7 +16,7 @@ Final name looks something like this: upload-to-itch_nordicsoftworks_cardbattles
 
 # Notes
 
-The script uses Itch's butler behind the scenes to do the upload, it automatically downloads it, you don't have to worry about it. (Butler: https://itch.io/docs/butler)
+The script uses Itch's butler behind the scenes to do the upload. (Butler: https://itch.io/docs/butler)
 
 It is faster than manually uploading zip files, it only uploads the changes.
 
