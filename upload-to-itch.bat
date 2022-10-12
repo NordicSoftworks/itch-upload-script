@@ -31,14 +31,14 @@ $tokens = $name -Split '_'
 if ($tokens.Count -ne 4)
 {
 	echo ""
-	echo "Please rename the script file to: upload-to-itch_USER_PROJECT_TARGET"
+	echo "Please rename the script file to: upload-to-itch_MYUSER_MYPROJECT_MYBUILD"
 	echo ""
-	echo "Replace USER, PROJECT & TARGET with your information."
+	echo "Replace MYUSER, MYPROJECT & MYBUILD with your information."
 	echo ""
 	echo "You can get USER & PROJECT from your itch url. It looks like this: https://USER.itch.io/PROJECT"
 	echo ""
-	echo "TARGET is the folder/file/platform of your build. Example: windows, mac, linux or android.apk"
-	echo "Example: You have a folder named windows where your windows build is, then your TARGET is windows, place this script beside it."
+	echo "MYBUILD is the folder/file/platform of your project. Platforms: windows, mac, linux or android.apk "
+	echo "Example: You have a folder named windows where your windows build is, then your MYBUILD is windows, place this script beside it."
 	echo "Read more: https://itch.io/docs/butler/pushing.html#channel-names"
 	echo ""
 	echo "Final name looks something like this: upload-to-itch_nordicsoftworks_cardbattlesimulator_windows"
@@ -51,11 +51,11 @@ if ($tokens.Count -ne 4)
 # Get the information from name and display it
 $user = $tokens[1]
 $project = $tokens[2]
-$target = $tokens[3]
+$build = $tokens[3]
 echo ""
 echo "User    = $user"
 echo "Project = $project"
-echo "Target  = $target"
+echo "Build   = $build"
 echo "URL     = https://$user.itch.io/$project"
 echo ""
 
@@ -81,6 +81,6 @@ if (-not (Test-Path $butler))
 #&$butler upgrade
 
 # Upload to itch.io
-&$butler push $target "$user/$project`:$target" --if-changed --ignore *DoNotShip* --ignore *DontShip*
+&$butler push $build "$user/$project`:$build" --if-changed --ignore *DoNotShip* --ignore *DontShip*
 
 echo "Upload complete. You can follow the status on your itch.io edit page."
