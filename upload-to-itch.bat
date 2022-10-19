@@ -78,7 +78,7 @@ if (-not (Test-Path $butler))
 }
 
 # Make sure butler is updated
-#&$butler upgrade
+&$butler upgrade
 
 # Upload to itch.io
 &$butler push $build "$user/$project`:$build" --if-changed --ignore *DoNotShip* --ignore *DontShip*
