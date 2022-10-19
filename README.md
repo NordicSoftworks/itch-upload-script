@@ -12,7 +12,7 @@ You can get MYUSER & MYPROJECT from your itch url. https://MYUSER.itch.io/MYPROJ
 
 MYBUILD is the folder/file/platform of your project. Example: windows, mac, linux or android.apk 
 
-Final name looks something like this: upload-to-itch_nordicsoftworks_cardbattlesimulator_windows
+Final name looks something like this: upload-to-itch_nordicsoftworks_cardbattlesimulator_windows.bat
 
 # Notes
 
