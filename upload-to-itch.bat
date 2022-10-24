@@ -1,6 +1,7 @@
 :: Notes
 :: :: is used for comments in batch files.
 :: # is used for comments in PowerShell.
+:: Echo is used to print text to screen.
 
 :: What is
 :: Batch (.bat) files: https://en.wikipedia.org/wiki/Batch_file
@@ -10,13 +11,16 @@
 :: Hide commands, you can remove this command to see the batch commands. (@ is used to hide a single command)
 @echo off
 
-:: Echo is used to print text to screen.
-echo Launching.
+:: If script was not run with /passive, confirm upload.
+if not "%1"=="/passive" (
+	echo Press any key to begin upload to Itch.
+	pause >nul
+)
 
 :: Run the PowerShell code below (using PowerShell because it is easier to work with and more powerfull)
 powershell.exe $name = '%~n0'; Invoke-Expression ((Get-Content '%0' -Raw) -Split '# PowerShell Code' ^| Select -Last 1)
 
-:: If script was not run with argument /passive, pause to show output to user
+:: If script was not run with /passive, pause to show output to user
 if not "%1"=="/passive" pause >nul
 
 :: Exit so it does not try to run powershell code
@@ -70,10 +74,8 @@ if (-not (Test-Path $butler))
 	# Download zip with butler
 	wget https://broth.itch.ovh/butler/windows-amd64/LATEST/archive/default -OutFile $env:temp\butler.zip
 	
-	# Expand zip
+	# Expand and then delete zip
 	Expand-Archive $env:temp\butler.zip -DestinationPath $butlerInstallLocation
-	
-	# Delete zip
 	Remove-Item $env:temp\butler.zip
 }
 
