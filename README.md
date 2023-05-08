@@ -21,4 +21,4 @@ The script uses Itch's butler behind the scenes to do the upload. (Butler: https
 
 It is faster than manually uploading zip files, it only uploads the changes.
 
-It only uploads if there were changes and automatically ignores items with DoNotShip and DontShip in the name. You can edit the options in the bottom of the script. (Options: https://itch.io/docs/butler/pushing.html)
+It only uploads if there were changes and automatically ignores .git and items with DoNotShip and DontShip in the name. You can edit the options in the bottom of the script. (Options: https://itch.io/docs/butler/pushing.html)
