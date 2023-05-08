@@ -86,6 +86,6 @@ if (-not (Test-Path $butler))
 &$butler upgrade
 
 # Upload to itch.io
-&$butler push $folder "$user/$project`:$build" --if-changed --ignore *DoNotShip* --ignore *DontShip*
+&$butler push $folder "$user/$project`:$build" --if-changed --ignore .git --ignore *DoNotShip* --ignore *DontShip*
 
 echo "Upload complete. You can follow the status on your itch.io edit page."
