@@ -5,7 +5,8 @@ A simple script to upload your itch projects, just save it and double click to u
 1. Copy the contents of [upload-to-itch.bat](https://github.com/NordicSoftworks/itch-upload-script/raw/main/upload-to-itch.bat)
 2. Open notepad and insert the contents.
 3. Save it beside your build as `upload-to-itch_MYUSER_MYPROJECT_MYBUILD.bat`
-3. You can now upload your project by double clicking the script. (The first time Itch will ask you to login.)
+   1. Optionally: Add _FOLDER after MYBUILD to specific folder to upload, uses build if not specified.
+4. You can now upload your project by double clicking the script. (The first time Itch will ask you to login.)
 
 # What is MYUSER, MYPROJECT & MYBUILD?
 You can get MYUSER & MYPROJECT from your itch url. https://MYUSER.itch.io/MYPROJECT
