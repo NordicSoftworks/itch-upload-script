@@ -32,12 +32,13 @@ exit /b
 $tokens = $name -Split '_'
 
 # If file name is not split in 4, show guide
-if ($tokens.Count -ne 4)
+if (-not ($tokens.Count -eq 4 -or $tokens.Count -eq 5))
 {
 	echo ""
-	echo "Please rename the script file to: upload-to-itch_MYUSER_MYPROJECT_MYBUILD"
+	echo "Please rename the script file to: upload-to-itch_MYUSER_MYPROJECT_MYBUILD[_MYFOLDER]"
 	echo ""
 	echo "Replace MYUSER, MYPROJECT & MYBUILD with your information."
+	echo "[_MYFOLDER] is optional, will use MYBUILD if not specified."
 	echo ""
 	echo "You can get USER & PROJECT from your itch url. It looks like this: https://USER.itch.io/PROJECT"
 	echo ""
@@ -56,10 +57,12 @@ if ($tokens.Count -ne 4)
 $user = $tokens[1]
 $project = $tokens[2]
 $build = $tokens[3]
+$folder = $tokens | Select -Last 1
 echo ""
 echo "User    = $user"
 echo "Project = $project"
 echo "Build   = $build"
+echo "Folder  = $folder"
 echo "URL     = https://$user.itch.io/$project"
 echo ""
 
@@ -83,6 +86,6 @@ if (-not (Test-Path $butler))
 &$butler upgrade
 
 # Upload to itch.io
-&$butler push $build "$user/$project`:$build" --if-changed --ignore *DoNotShip* --ignore *DontShip*
+&$butler push $folder "$user/$project`:$build" --if-changed --ignore *DoNotShip* --ignore *DontShip*
 
 echo "Upload complete. You can follow the status on your itch.io edit page."
